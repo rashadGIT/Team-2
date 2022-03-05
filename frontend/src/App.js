@@ -1,22 +1,32 @@
-import logo from './logo.svg';
+import React, {useEffect, useState, useInput }from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import './App.css';
 
 function App() {
+  const [isURLVisible, setIsURLVisible] = useState(false);
+  
+  const generateURL = () => {
+    setIsURLVisible(!isURLVisible)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          defaultValue="Enter Name"
+        />
+        <br />
+        <Button variant="contained" size="small" onClick={() => generateURL()}>
+          Generate Game URL
+        </Button>
+        {(isURLVisible) && 
         <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          Hello World
+        </p>}
       </header>
     </div>
   );
